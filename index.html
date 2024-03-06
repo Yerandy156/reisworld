@@ -9,10 +9,11 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-image: url('https://wallpaperaccess.com/full/44729.jpg');
+            background-image: url('https://wallpapercave.com/wp/wp5428285.jpg');
             background-size: cover;
             background-position: center;
             color: white;
+            overflow: hidden;
         }
         .container {
             max-width: 400px;
@@ -22,28 +23,41 @@
             border-radius: 10px;
             text-align: center;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
         }
         h2 {
             font-size: 32px;
             margin-bottom: 20px;
         }
-        input[type="text"], input[type="password"] {
+        input[type="text"], input[type="password"], input[type="submit"] {
             width: calc(100% - 20px);
             padding: 10px;
             margin-bottom: 20px;
             border: none;
             border-radius: 5px;
             font-size: 18px;
-        }
-        input[type="submit"] {
-            width: calc(100% - 20px);
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            font-size: 18px;
+            position: relative;
+            z-index: 1;
             background-color: #ff7f50;
             color: white;
             cursor: pointer;
+            overflow: hidden;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.3);
+            z-index: -1;
+            transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        input[type="submit"]:hover::before {
+            transform: scale(2);
         }
         .links {
             margin-top: 20px;
@@ -69,6 +83,28 @@
             margin-top: 20px;
             color: #aaa;
         }
+        .crow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 40px;
+            background-image: url('https://cdn.iconscout.com/icon/free/png-256/crow-66-569294.png');
+            background-size: cover;
+            animation: fly 5s linear infinite;
+            z-index: 0;
+        }
+        @keyframes fly {
+            0% {
+                transform: translateX(0) translateY(0);
+            }
+            50% {
+                transform: translateX(300px) translateY(200px);
+            }
+            100% {
+                transform: translateX(0) translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
@@ -89,5 +125,11 @@
         </div>
         <div class="credit">Created by Rei</div>
     </div>
+    <!-- Crow animations -->
+    <div class="crow"></div>
+    <div class="crow" style="top: 50px; left: 50px;"></div>
+    <div class="crow" style="top: 150px; left: 100px;"></div>
+    <div class="crow" style="top: 200px; left: 200px;"></div>
+    <!-- Add more crows as needed -->
 </body>
 </html>
