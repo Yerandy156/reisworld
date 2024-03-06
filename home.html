@@ -16,27 +16,27 @@
             overflow: hidden;
         }
         .container {
-            max-width: 400px;
+            max-width: 500px;
             margin: 100px auto;
-            padding: 20px;
+            padding: 40px;
             background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 10px;
+            border-radius: 20px;
             text-align: center;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
             position: relative;
             z-index: 1;
         }
         h2 {
-            font-size: 32px;
+            font-size: 40px;
             margin-bottom: 20px;
         }
         input[type="text"], input[type="password"], input[type="submit"] {
             width: calc(100% - 20px);
-            padding: 10px;
+            padding: 15px;
             margin-bottom: 20px;
             border: none;
-            border-radius: 5px;
-            font-size: 18px;
+            border-radius: 10px;
+            font-size: 20px;
             position: relative;
             z-index: 1;
             background-color: #ff7f50;
@@ -83,28 +83,6 @@
             margin-top: 20px;
             color: #aaa;
         }
-        .crow {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 40px;
-            height: 40px;
-            background-image: url('https://cdn.iconscout.com/icon/free/png-256/crow-66-569294.png');
-            background-size: cover;
-            animation: fly 5s linear infinite;
-            z-index: 0;
-        }
-        @keyframes fly {
-            0% {
-                transform: translateX(0) translateY(0);
-            }
-            50% {
-                transform: translateX(300px) translateY(200px);
-            }
-            100% {
-                transform: translateX(0) translateY(0);
-            }
-        }
     </style>
 </head>
 <body>
@@ -125,11 +103,5 @@
         </div>
         <div class="credit">Created by Rei</div>
     </div>
-    <!-- Crow animations -->
-    <div class="crow"></div>
-    <div class="crow" style="top: 50px; left: 50px;"></div>
-    <div class="crow" style="top: 150px; left: 100px;"></div>
-    <div class="crow" style="top: 200px; left: 200px;"></div>
-    <!-- Add more crows as needed -->
 </body>
 </html>
