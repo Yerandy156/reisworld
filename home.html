@@ -6,17 +6,19 @@
     <title>Rei's World</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial Black', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #0d0f1e;
+            background-color: white;
             color: white;
+            overflow: hidden;
+            position: relative;
         }
         .container {
             max-width: 500px;
             margin: 100px auto;
             padding: 40px;
-            background-color: #1a1d36;
+            background-color: rgba(255, 255, 255, 0.9);
             border-radius: 20px;
             text-align: center;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
@@ -27,6 +29,7 @@
             font-size: 40px;
             margin-bottom: 20px;
             color: #32a1ff;
+            text-shadow: 0 0 10px #32a1ff;
         }
         input[type="text"], input[type="password"], input[type="submit"] {
             width: calc(100% - 20px);
@@ -35,11 +38,12 @@
             border: none;
             border-radius: 10px;
             font-size: 20px;
-            background-color: #32a1ff;
-            color: white;
+            background-color: #f2f2f2;
+            color: #333;
             cursor: pointer;
             overflow: hidden;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 10px #ccc;
         }
         input[type="submit"]::before {
             content: "";
@@ -48,12 +52,26 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.3);
+            background-color: rgba(50, 161, 255, 0.3);
             z-index: -1;
             transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
         }
         input[type="submit"]:hover::before {
             transform: scale(2);
+        }
+        input[type="submit"]:hover {
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
         }
         .links {
             margin-top: 20px;
@@ -79,14 +97,66 @@
             margin-top: 20px;
             color: #aaa;
         }
-        .logo {
-            width: 50px;
+        .animated-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #32a1ff;
+            opacity: 0.5;
+            animation: animateLine 4s linear infinite;
+        }
+        @keyframes animateLine {
+            0% {
+                transform: translateY(0%);
+            }
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+        .sidebar-top, .sidebar-bottom {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 50px;
-            margin: 20px;
+            background-color: rgba(50, 161, 255, 0.2);
+            z-index: 0;
+            animation: animateSidebar 3s linear infinite;
+        }
+        .sidebar-bottom {
+            top: auto;
+            bottom: 0;
+            animation-delay: 1.5s;
+        }
+        @keyframes animateSidebar {
+            0% {
+                transform: translateY(0%);
+            }
+            100% {
+                transform: translateY(-100%);
+            }
         }
     </style>
 </head>
 <body>
+    <div class="animated-lines">
+        <div class="line"></div>
+        <div class="line" style="top: 20%;"></div>
+        <div class="line" style="top: 40%;"></div>
+        <div class="line" style="top: 60%;"></div>
+        <div class="line" style="top: 80%;"></div>
+    </div>
+    <div class="sidebar-top"></div>
+    <div class="sidebar-bottom"></div>
     <div class="container">
         <h2>Rei's World</h2>
         <form action="#" method="post">
@@ -99,11 +169,11 @@
             <a href="#">Forgot Password?</a>
         </div>
         <div class="social-icons">
-            <img class="logo" src="https://img.icons8.com/color/48/000000/futuristic-city.png" alt="Futuristic">
-            <img class="logo" src="https://img.icons8.com/color/48/000000/robot-2.png" alt="Robot">
-            <img class="logo" src="https://img.icons8.com/color/48/000000/spaceship.png" alt="Spaceship">
+            <!-- No logos -->
         </div>
         <div class="credit">Created by Rei</div>
     </div>
+    <!-- Animated stick figure fighting scene -->
+    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/aa350653-9f30-4eda-a8ce-fe58ab6c8f83/d2e6b1x-aca2d5bf-ff8b-43b1-b75c-b02a2b0c3a7d.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2FhMzUwNjUzLTlmMzAtNGVkYS1hOGNlLWZlNThhYjZjOGY4M1wvZDJlNmIxeC1hY2EyZDViZi1mZjhiLTQzYjEtYjc1Yy1iMDJhMmIwYzNhN2QuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.QxMMJPNxE3y5ALOUcRG7AJuUl9YY3bLCJWfrLLEIvF4" alt="Stick figure fighting" style="position: fixed; bottom: 0; left: 0; width: 100%;">
 </body>
 </html>
